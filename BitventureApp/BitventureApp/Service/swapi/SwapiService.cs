@@ -24,19 +24,28 @@ namespace BitventureApp.Service.swapi
 
         public async Task<People> GetPeople()
         {
-
-            var response = await _httpClient.GetAsync("http://swapi.dev/api/people/1");
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var responseStream = await response.Content.ReadAsStreamAsync();
-                return await JsonSerializer.DeserializeAsync<People>(responseStream, jsonSerializerOptions);
+                var response = await _httpClient.GetAsync("http://swapi.dev/api/people/1");
 
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseStream = await response.Content.ReadAsStreamAsync();
+                    return await JsonSerializer.DeserializeAsync<People>(responseStream, jsonSerializerOptions);
+
+                }
+                else
+                {
+                    Console.WriteLine($"Error: {response.StatusCode} -GetPeople() ");
+
+                }
+
+              
             }
-            else
+            catch(Exception ex)
             {
-                Console.WriteLine($"Error: {response.StatusCode} -GetPeople() ");
-                Console.ReadLine();
+                Console.WriteLine($"Error: {ex.Message} -GetPeople() ");
+
             }
 
             return null;
@@ -45,18 +54,27 @@ namespace BitventureApp.Service.swapi
 
         public async Task<Film> GetFilm()
         {
-            var response = await _httpClient.GetAsync("http://swapi.dev/api/films/1");
+            try
+            {
+                var response = await _httpClient.GetAsync("http://swapi.dev/api/films/1");
 
-            if (response.IsSuccessStatusCode)
-            {
-                var responseStream = await response.Content.ReadAsStreamAsync();
-                return await JsonSerializer.DeserializeAsync<Film>(responseStream, jsonSerializerOptions);
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseStream = await response.Content.ReadAsStreamAsync();
+                    return await JsonSerializer.DeserializeAsync<Film>(responseStream, jsonSerializerOptions);
+                }
+                else
+                {
+                    Console.WriteLine($"Error: {response.StatusCode} -GetFilm");
+
+                }
             }
-            else
+            catch(Exception ex)
             {
-                Console.WriteLine($"Error: {response.StatusCode}");
-                Console.ReadLine();
+                Console.WriteLine($"Error: {ex.Message} -GetFilm()");
+
             }
+
 
             return null;
         }

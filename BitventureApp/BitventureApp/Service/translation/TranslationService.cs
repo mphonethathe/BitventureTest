@@ -24,15 +24,26 @@ namespace BitventureApp.Service.translation
 
         public async Task<Transalation> GetTranslation()
         {
-            var response = await _httpClient.GetAsync("https://api.funtranslations.com/translate/groot.json?text=Rocket%20hold%20still.");
 
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var responseStream = await response.Content.ReadAsStreamAsync();
-                return await JsonSerializer.DeserializeAsync<Transalation>(responseStream, jsonSerializerOptions);
+                var response = await _httpClient.GetAsync("https://api.funtranslations.com/translate/groot.json?text=Rocket%20hold%20still.");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseStream = await response.Content.ReadAsStreamAsync();
+                    return await JsonSerializer.DeserializeAsync<Transalation>(responseStream, jsonSerializerOptions);
+                }
+                else
+                {
+
+                    Console.WriteLine($"Error: {response.StatusCode} -GetTranslation() ");
+
+                }
             }
-            else
+            catch(Exception ex)
             {
+                Console.WriteLine($"Error: {ex.Message} -GetTranslation() ");
 
             }
 
