@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using BitventureApp.Service.swapi;
+using BitventureApp.Service.translation;
 using BitventureApp.util;
 
 namespace BitventureApp
@@ -15,91 +16,68 @@ namespace BitventureApp
 
         static async Task<int> Main(string[] args)
         {
-           GetPerson();
-           GetFilm();
-           GetTranslation();
 
-           return 0;
-        }
 
-        public static async void GetPerson()
-        {
             HttpClient _httpClient = new HttpClient();
             SwapiService SwapiService = new SwapiService(_httpClient);
-            People People = new People();
-            Evaluate evaluate = new Evaluate();
+            TranslationService TranslationService = new TranslationService(_httpClient);
+            Validation validation = new Validation();
+            People People;
+            Film Film;
+            Transalation Transalation;
+
 
             //Call the service to Get Person 
             People = await SwapiService.GetPeople();
 
-            //check if the name is "Luke Skywalker"
-            var validateName = evaluate.EvaluateName(People.Name, "Luke Skywalker");
-
-            if (validateName)
-            {
-                Console.WriteLine($"the name return match Luke Skywalker");
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine("the name return does not match Luke Skywalker");
-                Console.ReadLine();
-            }
-
-
-
-
-        }
-
-        public static async void GetFilm()
-        {
-            HttpClient _httpClient = new HttpClient();
-            SwapiService SwapiService = new SwapiService(_httpClient);
-            Film Film = new Film();
-            Evaluate evaluate = new Evaluate();
-
-            //Call the service to Get Film Titile 
+            //Call the service to Get Film 
             Film = await SwapiService.GetFilm();
 
-            //check if the film title is "A New Hope"
-            var validateName = evaluate.EvaluateName(Film.Title, "Luke Skywalker");
+            //Call the service to Get translation
+            Transalation = await TranslationService.GetTranslation();
 
-            if (validateName)
+          
+
+
+            if (People != null)
             {
-                Console.WriteLine($"the film title return match A New Hope");
+                //validate Person details
+              Console.WriteLine(validation.ValidatePerson(People));
+
+            }
+            else
+            {
+                Console.WriteLine("Something went wrong while calling the service");
+            }
+
+            if(Film!= null)
+            {
+                Console.WriteLine(validation.ValidateFilm(Film));
+  
+            }
+            else
+            {
+                Console.WriteLine("Something went wrong while calling the service");
+            }
+
+            if (Transalation != null)
+            {
+                Console.WriteLine(validation.ValidateTranslation(Transalation));
                 Console.ReadLine();
             }
             else
             {
-                Console.WriteLine("the film title return does not match A New Hope");
-                Console.ReadLine();
+                Console.WriteLine("Something went wrong while calling the service");
             }
+
+
+
+
+            return 0;
         }
 
-        public static async void GetTranslation()
-        {
-            HttpClient _httpClient = new HttpClient();
-            SwapiService SwapiService = new SwapiService(_httpClient);
-            Film film = new Film();
-            Evaluate evaluate = new Evaluate();
 
-            //Call the service to Get Film Titile 
-            film = await SwapiService.GetFilm();
 
-            //check if the film title is "A New Hope"
-            var validateName = evaluate.EvaluateName(film.Title, "Luke Skywalker");
-
-            if (validateName)
-            {
-                Console.WriteLine($"the film title return match A New Hope");
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine("the film title return does not match A New Hope");
-                Console.ReadLine();
-            }
-        }
 
     }
 }

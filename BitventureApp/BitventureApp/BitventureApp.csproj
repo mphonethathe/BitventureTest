@@ -79,6 +79,7 @@
     <Compile Include="Service\swapi\SwapiService.cs" />
     <Compile Include="Service\translation\TranslationService.cs" />
     <Compile Include="util\Evaluate.cs" />
+    <Compile Include="Validation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
