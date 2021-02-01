@@ -9,24 +9,21 @@ namespace BitventureApp.util
 {
     public class Evaluate
     {
-        public bool EvaluateName(string name,string sRegex)
+        public bool EvaluateName(string sInput,string sRegex)
         {
-            var match = Regex.Match(name, $"^{sRegex}");
-             
-            bool results = (match.Success) ? true : false;
+            var match = Regex.Match(sInput, $"^{sRegex}");
 
-            return results;
+            return match.Success;
 
         }
-        public bool EvaluateHeight(int height)
+        public bool EvaluateHeight(string height)
         {
-            //var match = Regex.Matches(height, $"//d");
 
-            //bool results = (match.) ? true : false;
+            string pattern = @"(\d)";
 
-            //return results;
+            var match = Regex.Match(height, pattern);
 
-            return true;
+            return match.Success;
 
         }
 

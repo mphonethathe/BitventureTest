@@ -55,6 +55,7 @@ namespace BitventureApp.Service.swapi
             else
             {
                 Console.WriteLine($"Error: {response.StatusCode}");
+                Console.ReadLine();
             }
 
             return null;
