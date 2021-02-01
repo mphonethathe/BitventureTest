@@ -11,14 +11,10 @@ namespace BitventureApp.util
     {
         public bool EvaluateName(string sInput,string sRegex)
         {
-            try
+            if (sInput != null && sRegex != null)
             {
                 var match = Regex.Match(sInput, $"^{sRegex}");
                 return match.Success;
-            }
-            catch(Exception ex)
-            {
-              string error =  ex.Message;
             }
 
             return false;
@@ -27,21 +23,29 @@ namespace BitventureApp.util
         }
         public bool EvaluateHeight(string height)
         {
-            
-            string pattern = @"(\d)";
+            if (height != null)
+            {
+                string pattern = @"(\d)";
 
-            var match = Regex.Match(height, pattern);
+                var match = Regex.Match(height, pattern);
 
-            return match.Success;
+                return match.Success;
+            }
+
+            return false;
 
         }
 
         public bool EvaluateEmail(string email)
         {
-            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,20})+)$");
-            Match match = regex.Match(email);
+            if (email != null)
+            {
+                Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,20})+)$");
+                Match match = regex.Match(email);
 
-           return match.Success;
+                return match.Success;
+            }
+            return false;
 
         }
 

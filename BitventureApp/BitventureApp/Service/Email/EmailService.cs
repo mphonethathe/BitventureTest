@@ -13,9 +13,6 @@ namespace BitventureApp.Service
 {
     public class EmailService
     {
-        private static bool mailSent = false;
-        private string returnMessage = string.Empty;
-
 
         public string SendEmail(Email email)
         {
@@ -30,6 +27,8 @@ namespace BitventureApp.Service
                 mail.Subject = "Bitventure Code test";
                 mail.Body = email.Body;
                 mail.IsBodyHtml = true;
+                
+                //this email and password is used for purpose of sending app email only 
 
                 using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
                 {
@@ -37,9 +36,9 @@ namespace BitventureApp.Service
                     smtp.EnableSsl = true;
                     try
                     {
-                        Message = "Email Sent";
+                      
                         smtp.Send(mail);
-
+                        Message = "Email Sent";
 
                     }
                     catch (Exception ex)

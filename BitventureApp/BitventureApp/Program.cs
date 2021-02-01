@@ -55,19 +55,25 @@ namespace BitventureApp
             
             if(Film!= null)
             {
+                //validate Film
                 Console.WriteLine(validation.ValidateFilm(Film));
   
             }        
 
             if (Transalation != null)
             {
+                //validate Transalation
                 Console.WriteLine(validation.ValidateTranslation(Transalation));
              
             }
 
+
+
+            //Send results via email
+
             Console.WriteLine("_____________________________________________________________________");
 
-            Console.WriteLine("Do you want to send this information via Email? Reply with Yes of No");
+            Console.WriteLine("Do you want to send this information via Email? Reply with yes of no");
 
             string Answer = Console.ReadLine();
 
