@@ -6,7 +6,7 @@ using BitventureApp.Models;
 
 namespace BitventureApp.Service.translation
 {
-    class TranslationService
+   public class TranslationService
     {
         private readonly HttpClient _httpClient;
 

@@ -19,7 +19,6 @@ C:\Users\mnethathe\Documents\BitventureTest\BitventureApp\BitventureApp\bin\Debu
 C:\Users\mnethathe\Documents\BitventureTest\BitventureApp\BitventureApp\bin\Debug\System.Text.Json.xml
 C:\Users\mnethathe\Documents\BitventureTest\BitventureApp\BitventureApp\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\mnethathe\Documents\BitventureTest\BitventureApp\BitventureApp\bin\Debug\System.ValueTuple.xml
-C:\Users\mnethathe\Documents\BitventureTest\BitventureApp\BitventureApp\obj\Debug\BitventureApp.csprojAssemblyReference.cache
 C:\Users\mnethathe\Documents\BitventureTest\BitventureApp\BitventureApp\obj\Debug\BitventureApp.csproj.CoreCompileInputs.cache
 C:\Users\mnethathe\Documents\BitventureTest\BitventureApp\BitventureApp\obj\Debug\BitventureApp.csproj.CopyComplete
 C:\Users\mnethathe\Documents\BitventureTest\BitventureApp\BitventureApp\obj\Debug\BitventureApp.exe
