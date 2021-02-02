@@ -14,8 +14,8 @@ namespace APITestProject
         public void EvaluateName()
         {
 
-            string sInput = "mpho nethathe";
-            string sRegex = "mpho nethathe";
+           string sInput = "Luke Skywalker";
+            string sRegex = "Luke Skywalker";
             Assert.AreEqual(Evaluate.EvaluateName(sInput, sRegex), true);
 
         }
@@ -43,7 +43,7 @@ namespace APITestProject
         [TestMethod]
         public void EvaluateEmail()
         {
-            string email = "mphon@bitventure.co.za";
+            string email = "mphonethathe@gmail.com";
             Assert.AreEqual(Evaluate.EvaluateEmail(email), true);
 
         }
