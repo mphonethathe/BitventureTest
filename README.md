@@ -1,6 +1,6 @@
 # BitventureTest
 
-This is a Microsoft Console Apllication that is targeting .Net framwork 4.7.2
+This is a Microsoft Console Apllication that is targeting .Net framwork 4.7.2 and using  C#
 
 I have included the Test Project (for unit Testing)
 
